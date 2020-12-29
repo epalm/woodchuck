@@ -17,6 +17,8 @@ export class AvailablePieces extends Component {
 
 AvailablePieces.propTypes = {
   availablePieces: PropTypes.array.isRequired,
+  toggleEnabled: PropTypes.func.isRequired,
+  deleteAvailablePiece: PropTypes.func.isRequired,
 };
 
 export default AvailablePieces;

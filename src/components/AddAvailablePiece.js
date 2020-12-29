@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export class AddAvailablePiece extends Component {
   defaultState = { count: "", length: "" };
@@ -37,5 +38,9 @@ export class AddAvailablePiece extends Component {
     );
   }
 }
+
+AddAvailablePiece.propTypes = {
+  addPiece: PropTypes.func.isRequired,
+};
 
 export default AddAvailablePiece;

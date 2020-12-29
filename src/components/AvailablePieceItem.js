@@ -38,6 +38,8 @@ const btnStyle = {
 
 AvailablePieceItem.propTypes = {
   piece: PropTypes.object.isRequired,
+  toggleEnabled: PropTypes.func.isRequired,
+  deleteAvailablePiece: PropTypes.func.isRequired,
 };
 
 export default AvailablePieceItem;
