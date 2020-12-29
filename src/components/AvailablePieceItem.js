@@ -1,35 +1,30 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-export class AvailablePieceItem extends Component {
-  getStyle = () => {
+function AvailablePieceItem({ piece, toggleEnabled, deleteAvailablePiece }) {
+  const getStyle = () => {
     return {
-      textDecoration: this.props.piece.enabled ? "none" : "line-through",
+      textDecoration: piece.enabled ? "none" : "line-through",
     };
   };
 
-  render() {
-    const { id, enabled, count, length } = this.props.piece;
+  const { id, enabled, count, length } = piece;
 
-    return (
-      <div style={this.getStyle()}>
-        <p>
-          <input
-            type="checkbox"
-            checked={enabled}
-            onChange={this.props.toggleEnabled.bind(this, id)}
-          />
-          count={count}, length={length}
-          <button
-            style={btnStyle}
-            onClick={this.props.deleteAvailablePiece.bind(this, id)}
-          >
-            x
-          </button>
-        </p>
-      </div>
-    );
-  }
+  return (
+    <div style={getStyle()}>
+      <p>
+        <input
+          type="checkbox"
+          checked={enabled}
+          onChange={() => toggleEnabled(id)}
+        />
+        count={count}, length={length}
+        <button style={btnStyle} onClick={() => deleteAvailablePiece(id)}>
+          x
+        </button>
+      </p>
+    </div>
+  );
 }
 
 const btnStyle = {
