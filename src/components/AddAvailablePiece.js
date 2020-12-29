@@ -1,42 +1,36 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-export class AddAvailablePiece extends Component {
-  defaultState = { count: "", length: "" };
-  state = this.defaultState;
+function AddAvailablePiece({ addPiece }) {
+  const [count, setCount] = useState("");
+  const [length, setLength] = useState("");
 
-  onChange = (e) =>
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-
-  onSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    this.props.addPiece(this.state.count, this.state.length);
-    this.setState(this.defaultState);
+    addPiece(count, length);
+    setCount("");
+    setLength("");
   };
 
-  render() {
-    return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          type="text"
-          name="count"
-          placeholder="count"
-          value={this.state.count}
-          onChange={this.onChange}
-        />
-        <input
-          type="text"
-          name="length"
-          placeholder="length"
-          value={this.state.length}
-          onChange={this.onChange}
-        />
-        <input type="submit" value="Add Piece" />
-      </form>
-    );
-  }
+  return (
+    <form onSubmit={onSubmit}>
+      <input
+        type="text"
+        name="count"
+        placeholder="count"
+        value={count}
+        onChange={(e) => setCount(e.target.value)}
+      />
+      <input
+        type="text"
+        name="length"
+        placeholder="length"
+        value={length}
+        onChange={(e) => setLength(e.target.value)}
+      />
+      <input type="submit" value="Add Piece" />
+    </form>
+  );
 }
 
 AddAvailablePiece.propTypes = {

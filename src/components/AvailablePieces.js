@@ -1,18 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
 import AvailablePieceItem from "./AvailablePieceItem";
 import PropTypes from "prop-types";
 
-export class AvailablePieces extends Component {
-  render() {
-    return this.props.availablePieces.map((piece) => (
-      <AvailablePieceItem
-        key={piece.id}
-        piece={piece}
-        toggleEnabled={this.props.toggleEnabled}
-        deleteAvailablePiece={this.props.deleteAvailablePiece}
-      />
-    ));
-  }
+function AvailablePieces({
+  availablePieces,
+  toggleEnabled,
+  deleteAvailablePiece,
+}) {
+  return availablePieces.map((piece) => (
+    <AvailablePieceItem
+      key={piece.id}
+      piece={piece}
+      toggleEnabled={toggleEnabled}
+      deleteAvailablePiece={deleteAvailablePiece}
+    />
+  ));
 }
 
 AvailablePieces.propTypes = {
