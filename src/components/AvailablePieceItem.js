@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function AvailablePieceItem({ piece, toggleEnabled, deleteAvailablePiece }) {
+function AvailablePieceItem({ piece, toggleEnabled, deletePiece }) {
   const getStyle = () => {
     return {
       textDecoration: piece.enabled ? "none" : "line-through",
@@ -19,7 +19,7 @@ function AvailablePieceItem({ piece, toggleEnabled, deleteAvailablePiece }) {
           onChange={() => toggleEnabled(id)}
         />
         count={count}, length={length}
-        <button style={btnStyle} onClick={() => deleteAvailablePiece(id)}>
+        <button style={btnStyle} onClick={() => deletePiece(id)}>
           x
         </button>
       </p>
@@ -34,7 +34,7 @@ const btnStyle = {
 AvailablePieceItem.propTypes = {
   piece: PropTypes.object.isRequired,
   toggleEnabled: PropTypes.func.isRequired,
-  deleteAvailablePiece: PropTypes.func.isRequired,
+  deletePiece: PropTypes.func.isRequired,
 };
 
 export default AvailablePieceItem;

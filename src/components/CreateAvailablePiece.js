@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-function AddAvailablePiece({ addPiece }) {
+function CreateAvailablePiece({ createPiece }) {
   const [count, setCount] = useState("");
   const [length, setLength] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
-    addPiece(count, length);
+    createPiece(count, length);
     setCount("");
     setLength("");
   };
@@ -33,8 +33,8 @@ function AddAvailablePiece({ addPiece }) {
   );
 }
 
-AddAvailablePiece.propTypes = {
-  addPiece: PropTypes.func.isRequired,
+CreateAvailablePiece.propTypes = {
+  createPiece: PropTypes.func.isRequired,
 };
 
-export default AddAvailablePiece;
+export default CreateAvailablePiece;

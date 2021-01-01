@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-import AvailablePieces from "./components/AvailablePieces";
-import AddAvailablePiece from "./components/AddAvailablePiece";
+import AvailablePieceList from "./components/AvailablePieceList";
+import CreateAvailablePiece from "./components/CreateAvailablePiece";
 
 import "./App.css";
 
@@ -28,6 +28,16 @@ function App() {
     },
   ]);
 
+  const createAvailablePiece = (count, length) => {
+    const piece = {
+      id: uuidv4(),
+      enabled: true,
+      count: count,
+      length: length,
+    };
+    setAvailablePieces([...availablePieces, piece]);
+  };
+
   const toggleEnabled = (id) => {
     setAvailablePieces(
       availablePieces.map((piece) => {
@@ -43,25 +53,15 @@ function App() {
     setAvailablePieces([...availablePieces.filter((piece) => piece.id !== id)]);
   };
 
-  const addAvailablePiece = (count, length) => {
-    const newPiece = {
-      id: uuidv4(),
-      enabled: true,
-      count: count,
-      length: length,
-    };
-    setAvailablePieces([...availablePieces, newPiece]);
-  };
-
   return (
     <div className="App">
       <h1>Woodchuck</h1>
-      <AvailablePieces
+      <AvailablePieceList
         availablePieces={availablePieces}
         toggleEnabled={toggleEnabled}
-        deleteAvailablePiece={deleteAvailablePiece}
+        deletePiece={deleteAvailablePiece}
       />
-      <AddAvailablePiece addPiece={addAvailablePiece} />
+      <CreateAvailablePiece createPiece={createAvailablePiece} />
     </div>
   );
 }

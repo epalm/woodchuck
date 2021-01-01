@@ -2,25 +2,21 @@ import React from "react";
 import AvailablePieceItem from "./AvailablePieceItem";
 import PropTypes from "prop-types";
 
-function AvailablePieces({
-  availablePieces,
-  toggleEnabled,
-  deleteAvailablePiece,
-}) {
+function AvailablePieceList({ availablePieces, toggleEnabled, deletePiece }) {
   return availablePieces.map((piece) => (
     <AvailablePieceItem
       key={piece.id}
       piece={piece}
       toggleEnabled={toggleEnabled}
-      deleteAvailablePiece={deleteAvailablePiece}
+      deletePiece={deletePiece}
     />
   ));
 }
 
-AvailablePieces.propTypes = {
+AvailablePieceList.propTypes = {
   availablePieces: PropTypes.array.isRequired,
   toggleEnabled: PropTypes.func.isRequired,
-  deleteAvailablePiece: PropTypes.func.isRequired,
+  deletePiece: PropTypes.func.isRequired,
 };
 
-export default AvailablePieces;
+export default AvailablePieceList;
