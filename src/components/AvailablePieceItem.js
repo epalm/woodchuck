@@ -1,23 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function AvailablePieceItem({ piece, toggleEnabled, deletePiece }) {
-  const getStyle = () => {
-    return {
-      textDecoration: piece.enabled ? "none" : "line-through",
-    };
-  };
-
-  const { id, enabled, count, length } = piece;
+function AvailablePieceItem({ piece, deletePiece }) {
+  const { id, count, length } = piece;
 
   return (
-    <div style={getStyle()}>
+    <div>
       <p>
-        <input
-          type="checkbox"
-          checked={enabled}
-          onChange={() => toggleEnabled(id)}
-        />
         count={count}, length={length}
         <button style={btnStyle} onClick={() => deletePiece(id)}>
           x
@@ -33,7 +22,6 @@ const btnStyle = {
 
 AvailablePieceItem.propTypes = {
   piece: PropTypes.object.isRequired,
-  toggleEnabled: PropTypes.func.isRequired,
   deletePiece: PropTypes.func.isRequired,
 };
 
