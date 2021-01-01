@@ -34,6 +34,14 @@ function App() {
     setAvailablePieces([...availablePieces, piece]);
   };
 
+  const updateAvailablePiece = (updatedPiece) => {
+    setAvailablePieces([
+      ...availablePieces.map((piece) =>
+        piece.id === updatedPiece.id ? updatedPiece : piece
+      ),
+    ]);
+  };
+
   const deleteAvailablePiece = (id) => {
     setAvailablePieces([...availablePieces.filter((piece) => piece.id !== id)]);
   };
@@ -43,6 +51,7 @@ function App() {
       <h1>Woodchuck</h1>
       <AvailablePieceList
         availablePieces={availablePieces}
+        updatePiece={updateAvailablePiece}
         deletePiece={deleteAvailablePiece}
       />
       <CreateAvailablePiece createPiece={createAvailablePiece} />

@@ -1,14 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function AvailablePieceItem({ piece, deletePiece }) {
-  const { id, count, length } = piece;
+function AvailablePieceItem({ piece, updatePiece, deletePiece }) {
+  const handleChange = (e) =>
+    updatePiece({ ...piece, [e.target.name]: e.target.value });
 
   return (
     <div>
       <p>
-        count={count}, length={length}
-        <button style={btnStyle} onClick={() => deletePiece(id)}>
+        <input name="count" value={piece.count} onChange={handleChange} />
+        <input name="length" value={piece.length} onChange={handleChange} />
+        <button style={btnStyle} onClick={() => deletePiece(piece.id)}>
           x
         </button>
       </p>
