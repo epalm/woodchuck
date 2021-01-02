@@ -1,60 +1,44 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-import AvailablePieceList from "./components/AvailablePieceList";
-import CreateAvailablePiece from "./components/CreateAvailablePiece";
+import PieceList from "./components/PieceList";
+import CreatePiece from "./components/CreatePiece";
 
 import "./App.css";
 
 function App() {
-  const [availablePieces, setAvailablePieces] = useState([
-    {
-      id: uuidv4(),
-      count: 2,
-      length: 12 * 8, // 8 ft piece
-    },
-    {
-      id: uuidv4(),
-      count: 4,
-      length: 12 * 12, // 12 ft piece
-    },
-    {
-      id: uuidv4(),
-      count: 99,
-      length: 12 * 16, // 16 ft piece
-    },
-  ]);
+  const [pieces, setPieces] = useState([]);
 
-  const createAvailablePiece = (count, length) => {
+  const createPiece = (count, length) => {
     const piece = {
       id: uuidv4(),
       count: count,
       length: length,
     };
-    setAvailablePieces([...availablePieces, piece]);
+    setPieces([...pieces, piece]);
   };
 
-  const updateAvailablePiece = (updatedPiece) => {
-    setAvailablePieces([
-      ...availablePieces.map((piece) =>
+  const updatePiece = (updatedPiece) => {
+    setPieces([
+      ...pieces.map((piece) =>
         piece.id === updatedPiece.id ? updatedPiece : piece
       ),
     ]);
   };
 
-  const deleteAvailablePiece = (id) => {
-    setAvailablePieces([...availablePieces.filter((piece) => piece.id !== id)]);
+  const deletePiece = (id) => {
+    setPieces([...pieces.filter((piece) => piece.id !== id)]);
   };
 
   return (
     <div className="App">
       <h1>Woodchuck</h1>
-      <AvailablePieceList
-        availablePieces={availablePieces}
-        updatePiece={updateAvailablePiece}
-        deletePiece={deleteAvailablePiece}
+      <PieceList
+        pieces={pieces}
+        updatePiece={updatePiece}
+        deletePiece={deletePiece}
       />
-      <CreateAvailablePiece createPiece={createAvailablePiece} />
+      <CreatePiece createPiece={createPiece} />
     </div>
   );
 }

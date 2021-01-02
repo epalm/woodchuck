@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function AvailablePieceItem({ piece, updatePiece, deletePiece }) {
+function PieceItem({ piece, updatePiece, deletePiece }) {
   const handleChange = (e) =>
     updatePiece({ ...piece, [e.target.name]: e.target.value });
 
@@ -22,9 +22,9 @@ const btnStyle = {
   background: "#f00",
 };
 
-AvailablePieceItem.propTypes = {
+PieceItem.propTypes = {
   piece: PropTypes.object.isRequired,
   deletePiece: PropTypes.func.isRequired,
 };
 
-export default AvailablePieceItem;
+export default PieceItem;

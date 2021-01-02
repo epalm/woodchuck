@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-function CreateAvailablePiece({ createPiece }) {
+function CreatePiece({ createPiece }) {
   const [count, setCount] = useState("");
   const [length, setLength] = useState("");
 
@@ -33,8 +33,8 @@ function CreateAvailablePiece({ createPiece }) {
   );
 }
 
-CreateAvailablePiece.propTypes = {
+CreatePiece.propTypes = {
   createPiece: PropTypes.func.isRequired,
 };
 
-export default CreateAvailablePiece;
+export default CreatePiece;
