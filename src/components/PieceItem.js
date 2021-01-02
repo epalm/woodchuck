@@ -24,6 +24,7 @@ const btnStyle = {
 
 PieceItem.propTypes = {
   piece: PropTypes.object.isRequired,
+  updatePiece: PropTypes.func.isRequired,
   deletePiece: PropTypes.func.isRequired,
 };
 
