@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { usePieces } from "../providers/PieceProvider";
 
-function CreatePiece() {
+function PieceForm() {
   const [count, setCount] = useState("");
   const [length, setLength] = useState("");
   const { createPiece } = usePieces();
@@ -35,4 +35,4 @@ function CreatePiece() {
   );
 }
 
-export default CreatePiece;
+export default PieceForm;
