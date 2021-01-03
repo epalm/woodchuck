@@ -1,7 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function PieceItem({ piece, updatePiece, deletePiece }) {
+import { usePieces } from "../providers/PieceProvider";
+
+function PieceItem({ piece }) {
+  const { updatePiece, deletePiece } = usePieces();
+
   const handleChange = (e) =>
     updatePiece({ ...piece, [e.target.name]: e.target.value });
 
@@ -24,8 +28,6 @@ const btnStyle = {
 
 PieceItem.propTypes = {
   piece: PropTypes.object.isRequired,
-  updatePiece: PropTypes.func.isRequired,
-  deletePiece: PropTypes.func.isRequired,
 };
 
 export default PieceItem;

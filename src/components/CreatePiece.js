@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 
-function CreatePiece({ createPiece }) {
+import { usePieces } from "../providers/PieceProvider";
+
+function CreatePiece() {
   const [count, setCount] = useState("");
   const [length, setLength] = useState("");
+  const { createPiece } = usePieces();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -32,9 +34,5 @@ function CreatePiece({ createPiece }) {
     </form>
   );
 }
-
-CreatePiece.propTypes = {
-  createPiece: PropTypes.func.isRequired,
-};
 
 export default CreatePiece;
